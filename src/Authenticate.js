@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 const axios = require('axios');
+axios.defaults.withCredentials = true;
 
 function Authenticate() {
 	const [value, setValue] = useState({
@@ -21,13 +22,12 @@ function Authenticate() {
 			password: value.password,
 		};
 
-		const api = axios.create({
-			withCredentials: true,
-		});
-		api.post('http://localhost:5000/api/login', user)
+		axios
+			.post('http://localhost:5000/api/login', user)
 			.then(res => console.log(res))
 			.catch(err => console.log(err));
 	};
+
 	return (
 		<form>
 			<input

@@ -7,8 +7,10 @@ function App() {
 	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
-		axios
-			.get('http://localhost:5000/api/users')
+		const api = axios.create({
+			withCredentials: true,
+		});
+		api.get('http://localhost:5000/api/users')
 
 			.then(users => {
 				setUsers(users.data);
