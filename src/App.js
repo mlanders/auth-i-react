@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import Authenticate from './Authenticate';
 
 function App() {
 	const [users, setUsers] = useState([]);
@@ -17,6 +18,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<Authenticate />
 			{users ? users.map(item => <p key={item.id}>{item.username}</p>) : <p>test</p>}
 		</div>
 	);
